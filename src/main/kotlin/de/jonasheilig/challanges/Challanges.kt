@@ -11,6 +11,7 @@ class Challanges : JavaPlugin() {
     var isChallenge2Active: Boolean = false
     private val challenge1 = Challange1(this)
     private val challenge2 = Challange2(this)
+    private lateinit var timerManager: TimerManager
 
     override fun onEnable() {
         // Plugin startup logic
@@ -18,7 +19,8 @@ class Challanges : JavaPlugin() {
         this.getCommand("activate")?.tabCompleter = ChallengeTabCompleter()
         this.getCommand("deactivate")?.setExecutor(DeactivateCommand(this))
         this.getCommand("deactivate")?.tabCompleter = ChallengeTabCompleter()
-        this.getCommand("timer")?.setExecutor(TimerCommand(this))
+        timerManager = TimerManager(this)
+        this.getCommand("timer")?.setExecutor(TimerCommand(timerManager))
         this.getCommand("timer")?.tabCompleter = TimerTabCompleter()
         server.pluginManager.registerEvents(BlockBreakListener(this), this)
     }
