@@ -1,0 +1,4 @@
+name: Challanges
+version: '1.0-SNAPSHOT'
+main: de.jonasheilig.challanges.Challanges
+api-version: '1.21'
