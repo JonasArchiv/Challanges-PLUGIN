@@ -1,6 +1,5 @@
 package de.jonasheilig.challanges
 
-import net.md_5.bungee.api.ChatMessageType
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Material
 import org.bukkit.plugin.java.JavaPlugin
@@ -19,6 +18,8 @@ class Challanges : JavaPlugin() {
         this.getCommand("activate")?.tabCompleter = ChallengeTabCompleter()
         this.getCommand("deactivate")?.setExecutor(DeactivateCommand(this))
         this.getCommand("deactivate")?.tabCompleter = ChallengeTabCompleter()
+        this.getCommand("timer")?.setExecutor(TimerCommand(this))
+        this.getCommand("timer")?.tabCompleter = TimerTabCompleter()
         server.pluginManager.registerEvents(BlockBreakListener(this), this)
     }
 
@@ -41,7 +42,7 @@ class Challanges : JavaPlugin() {
         server.onlinePlayers.forEach { player ->
             player.inventory.addItem(randomItem)
             val message = TextComponent("Item to search: ${randomItem.type}")
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, message)
+            player.sendMessage(message.toLegacyText())
         }
     }
 

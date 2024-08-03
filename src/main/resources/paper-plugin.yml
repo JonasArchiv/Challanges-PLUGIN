@@ -9,3 +9,6 @@ commands:
   deactivate:
     description: Deactivate the current challenge
     usage: /<command> <challenge>
+  timer:
+    description: Manages the timer
+    usage: /<command> <resume|stop|reset>
