@@ -2,3 +2,10 @@ name: Challanges
 version: '1.0-SNAPSHOT'
 main: de.jonasheilig.challanges.Challanges
 api-version: '1.21'
+commands:
+  activate:
+    description: Activate a challenge
+    usage: /<command> <challenge>
+  deactivate:
+    description: Deactivate the current challenge
+    usage: /<command> <challenge>

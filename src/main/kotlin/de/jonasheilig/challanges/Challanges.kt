@@ -9,8 +9,12 @@ class Challanges : JavaPlugin() {
     private val challenge1 = Challange1(this)
 
     override fun onEnable() {
-        // Plugin startup logic
-        server.pluginManager.registerEvents(BlockBreakListener(this), this)
+
+        this.getCommand("activate")?.setExecutor(ActivateCommand(this))
+        this.getCommand("activate")?.tabCompleter = ChallengeTabCompleter()
+        this.getCommand("deactivate")?.setExecutor(DeactivateCommand(this))
+        this.getCommand("deactivate")?.tabCompleter = ChallengeTabCompleter()
+        server.pluginManager.registerEvents(BlockBreakListener(this), this
     }
 
     override fun onDisable() {
@@ -20,5 +24,10 @@ class Challanges : JavaPlugin() {
     fun setNextBlock() {
         currentBlock = challenge1.getRandomBlock()
         BossBarManager.updateBossBar(currentBlock)
+    }
+
+    fun clearCurrentBlock() {
+        currentBlock = null
+        BossBarManager.clearBossBar()
     }
 }

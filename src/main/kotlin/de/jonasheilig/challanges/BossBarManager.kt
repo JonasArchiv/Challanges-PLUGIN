@@ -18,4 +18,9 @@ object BossBarManager {
             }
         }
     }
+
+    fun clearBossBar() {
+        bossBar.isVisible = false
+        bossBar.removeAll()
+    }
 }
