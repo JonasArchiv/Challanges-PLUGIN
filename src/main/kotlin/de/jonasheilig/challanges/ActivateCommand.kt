@@ -13,7 +13,14 @@ class ActivateCommand(private val plugin: Challanges) : CommandExecutor {
                 when (args[0]) {
                     "challange1" -> {
                         plugin.setNextBlock()
+                        plugin.isChallenge1Active = true
                         sender.sendMessage("Challenge 1 activated!")
+                        return true
+                    }
+                    "challange2" -> {
+                        plugin.giveRandomItem()
+                        plugin.isChallenge2Active = true
+                        sender.sendMessage("Challenge 2 activated!")
                         return true
                     }
                     else -> {
